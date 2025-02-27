@@ -28,3 +28,5 @@ RUN apt-get update && \
 
 # Alternar de volta para o usuário padrão do Airflow
 USER airflow
+
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user psycopg2-binary==2.9.9
