@@ -50,5 +50,5 @@ RUN apt-get update && \
 USER airflow
 
 # Instalar novas bibliotecas manualmente
-# RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user cloudscraper==1.2.71
-# RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user fpdf==1.7.2
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user cloudscraper==1.2.71
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user fpdf==1.7.2
