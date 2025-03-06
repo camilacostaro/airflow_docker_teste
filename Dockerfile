@@ -15,7 +15,7 @@ USER airflow
 RUN pip install --upgrade pip
 
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user easyocr==1.7.2
+# RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user easyocr==1.7.2
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user pandas==2.1.4 numpy==1.26.4
 
