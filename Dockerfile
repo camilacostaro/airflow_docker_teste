@@ -33,7 +33,7 @@ RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user elast
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user Unidecode==1.3.8 regex==2024.11.6 tabula==1.0.5 tabula-py==2.10.0 tabulate==0.9.0
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user lxml==5.1.0 pretty-html-table==0.9.160 icecream==2.1.4 XlsxWriter==3.2.2
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user lxml==5.1.0 pretty-html-table==0.9.16 icecream==2.1.4 XlsxWriter==3.2.2
 
 # Instalar pacotes necessários para o ODBC Driver
 USER root
