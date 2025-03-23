@@ -45,7 +45,7 @@ jobs:
 
       - name: Verificar bibliotecas instaladas no Airflow
         run: |
-          CONTAINER_ID=$(docker compose ps -q webserver)
+          CONTAINER_ID=$(docker compose ps -q airflow-webserver)
           echo "Listando bibliotecas instaladas no container $CONTAINER_ID"
           docker exec $CONTAINER_ID pip freeze
 
