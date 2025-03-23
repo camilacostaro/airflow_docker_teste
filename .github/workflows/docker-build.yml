@@ -25,7 +25,7 @@ jobs:
 
       - name: Verificar bibliotecas instaladas na imagem
         run: |
-          docker run --rm lilacostaro/airflow_slim_extended:latest /bin/sh -c "pip freeze"
+          docker run --rm --entrypoint /bin/sh lilacostaro/airflow_slim_extended:latest -c "pip freeze"
 
       - name: Baixar imagens dependentes (Postgres e Redis)
         run: |
