@@ -1,4 +1,4 @@
-FROM apache/airflow:2.8.3-python3.10
+FROM apache/airflow:2.10.5-python3.10
 
 # Instala os pacotes de sistema necessarios
 USER root

@@ -34,25 +34,25 @@ jobs:
 
       - name: Subir container para teste
         run: |
-          docker-compose up airflow-init
+          docker compose up airflow-init
 
       - name: Subir Airflow para teste
         run: |
-          docker-compose up -d
+          docker compose up -d
           echo "Aguardando serviços subirem..."
           sleep 30
-          docker-compose ps
+          docker compose ps
 
       - name: Verificar bibliotecas instaladas no Airflow
         run: |
-          CONTAINER_ID=$(docker-compose ps -q webserver)
+          CONTAINER_ID=$(docker compose ps -q webserver)
           echo "Listando bibliotecas instaladas no container $CONTAINER_ID"
           docker exec $CONTAINER_ID pip freeze
 
       - name: Verificar se o Airflow está rodando
         run: |
           docker ps -a
-          docker logs $(docker-compose ps -q webserver)
+          docker logs $(docker compose ps -q webserver)
 
       - name: Login no Docker Hub
         if: github.ref == 'refs/heads/main'
