@@ -40,13 +40,17 @@ jobs:
         run: |
           docker compose up -d
           echo "Aguardando serviços subirem..."
-          sleep 30
+          sleep 60
           docker compose ps
 
       - name: Verificar se o Airflow está rodando
         run: |
           docker ps -a
-          docker logs $(docker compose ps -q webserver)
+          docker logs $(docker compose ps -q airflow-webserver)
+
+      - name: Para o airflow
+        run: |
+          docker compose down
 
       - name: Login no Docker Hub
         if: github.ref == 'refs/heads/main'
