@@ -3,12 +3,14 @@ FROM apache/airflow:2.10.5-python3.10
 # Instala os pacotes de sistema necessarios
 USER root
 RUN apt-get update && \
-    apt-get install -y pkg-config libsystemd-dev && \
+    apt-get install -y --no-install-recommends \
+    pkg-config \
+    libsystemd-dev \
     libgl1 \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
-    libxext6 \
+    libxext6 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
