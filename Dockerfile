@@ -62,7 +62,4 @@ RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf==1.7.2
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]==1.0.0
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==2.10.0
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
-
-RUN pip uninstall --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -y opencv-python opencv-contrib-python
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" opencv-python-headless==4.11.0.86
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle==3.0.0 -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
