@@ -4,6 +4,11 @@ FROM apache/airflow:2.10.5-python3.10
 USER root
 RUN apt-get update && \
     apt-get install -y pkg-config libsystemd-dev && \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxrender1 \
+    libxext6 \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -51,6 +56,9 @@ USER airflow
 # Instalar novas bibliotecas manualmente
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper==1.2.71
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf==1.7.2
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]==1.0.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==2.10.0
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
+
+RUN pip uninstall --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -y opencv-python opencv-contrib-python
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" opencv-python-headless==4.11.0.86
