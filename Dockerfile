@@ -10,9 +10,11 @@ RUN apt-get update && \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
-    libxext6 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    libxext6 \
+    libgomp1 \
+    libstdc++6 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copiar os arquivos de requisitos
 COPY requirements.txt /requirements.txt
