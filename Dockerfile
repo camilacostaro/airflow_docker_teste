@@ -15,7 +15,6 @@ USER airflow
 RUN pip install --upgrade pip
 
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
-# RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" --user easyocr==1.7.2
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas==2.1.4 numpy==1.26.4
 
@@ -53,3 +52,5 @@ USER airflow
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper==1.2.71
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf==1.7.2
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
