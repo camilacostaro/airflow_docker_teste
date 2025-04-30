@@ -54,12 +54,17 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Instalar pacotes necessários para compilar o DAWG
+RUN apt-get update && \
+    apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+
 # Alternar de volta para o usuário padrão do Airflow
 USER airflow
 
-# Instalar novas bibliotecas manualmente
+# O ideal é sempre instalar novas bibliotecas no final, adicionando uma nova camada
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper==1.2.71
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf==1.7.2
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]==1.0.0
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==2.10.0
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle==3.0.0 -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
