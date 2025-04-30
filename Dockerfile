@@ -25,23 +25,23 @@ RUN pip install --upgrade pip
 
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas==2.1.4 numpy==1.26.4
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas numpy
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests==2.31.0 requests-oauthlib==1.4.0 requests-toolbelt==1.0.0 requests-unixsocket==0.3.0 selenium==4.29.0 selenium-wire==5.1.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket selenium selenium-wire
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" SQLAlchemy==1.4.52 SQLAlchemy-JSONField==1.0.2 SQLAlchemy-Utils==0.41.1 pyodbc==5.1.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" SQLAlchemy SQLAlchemy-JSONField SQLAlchemy-Utils pyodbc
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" splinter==0.21.0 asttokens==3.0.0 tqdm==4.67.1 openpyxl==3.1.5 bs4==0.0.2
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" splinter asttokens tqdm openpyxl
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pikepdf==9.5.2 pdfminer.six==20221105 pdfkit==1.0.0 pdfplumber==0.8.0 PyPDF2==3.0.1 PyMuPDF==1.25.3
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pikepdf pdfminer.six pdfkit pdfplumber PyPDF2 PyMuPDF
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" urllib3==2.0.7 jsonpatch==1.33 jsonpointer==3.0.0 jsonschema==4.21.1
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" urllib3 jsonpatch jsonpointer jsonschema
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" elasticsearch==8.12.1 elasticsearch-dsl==8.17.1 Jinja2==3.1.3 xlrd==2.0.1 textract==1.5.0 wget==3.2
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" elasticsearch elasticsearch-dsl Jinja2 xlrd textract wget
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" Unidecode==1.3.8 regex==2024.11.6 tabula==1.0.5 tabula-py==2.10.0 tabulate==0.9.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" Unidecode regex tabula tabula-py tabulate
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" lxml==5.1.0 pretty-html-table==0.9.16 icecream==2.1.4 XlsxWriter==3.2.2
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" lxml pretty-html-table icecream XlsxWriter
 
 # Instalar pacotes necessários para o ODBC Driver
 USER root
@@ -62,9 +62,9 @@ RUN apt-get update && \
 USER airflow
 
 # O ideal é sempre instalar novas bibliotecas no final, adicionando uma nova camada
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper==1.2.71
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf==1.7.2
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]==1.0.0
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==2.10.0
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle==3.0.0 -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
