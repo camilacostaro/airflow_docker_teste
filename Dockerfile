@@ -29,15 +29,13 @@ RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas numpy
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket selenium selenium-wire
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" SQLAlchemy SQLAlchemy-JSONField SQLAlchemy-Utils pyodbc
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" SQLAlchemy SQLAlchemy-JSONField SQLAlchemy-Utils
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" splinter asttokens tqdm openpyxl
-
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pikepdf pdfminer.six pdfkit pdfplumber PyPDF2 PyMuPDF
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pyodbc openpyxl bs4
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" urllib3 jsonpatch jsonpointer jsonschema
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" elasticsearch elasticsearch-dsl Jinja2 xlrd textract wget
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" Jinja2 xlrd wget
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" Unidecode regex tabula tabula-py tabulate
 
@@ -63,8 +61,6 @@ USER airflow
 
 # O ideal é sempre instalar novas bibliotecas no final, adicionando uma nova camada
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" fpdf
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" camelot-py[cv]
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
