@@ -25,7 +25,7 @@ RUN apt-get update && \
     libxrandr2 \
     libgbm1 \
     libpango-1.0-0 \
-    libasound2t64 \
+    libasound2 \
     # ------------------------------------------
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
