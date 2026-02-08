@@ -13,6 +13,20 @@ RUN apt-get update && \
     libxext6 \
     libgomp1 \
     libstdc++6 \
+    # --- NOVAS DEPENDÊNCIAS PARA PLAYWRIGHT ---
+    libnss3 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    asound2 \
+    # ------------------------------------------
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +38,6 @@ USER airflow
 RUN pip install --upgrade pip
 
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
-
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas numpy
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket selenium selenium-wire
@@ -64,3 +77,7 @@ RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
+
+# --- ADIÇÃO DO PLAYWRIGHT ---
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" playwright
+RUN playwright install chromium
