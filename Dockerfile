@@ -81,7 +81,11 @@ RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextr
 # --- ADIÇÃO DO PLAYWRIGHT ---
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" playwright
 
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/airflow/pw-browsers
+
 USER root
+RUN mkdir -p /opt/airflow/pw-browsers && \
+    chown -R airflow:root /opt/airflow/pw-browsers
 RUN playwright install-deps chromium
 
 USER airflow
