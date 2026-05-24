@@ -38,7 +38,7 @@ USER airflow
 RUN pip install --upgrade pip
 
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas numpy
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas==2.2.3 numpy==1.26.4
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket
 
