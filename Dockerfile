@@ -40,7 +40,7 @@ RUN pip install --upgrade pip
 # Instalar pacotes aos poucos para diminuir o tamanho das camadas
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" pandas numpy
 
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket selenium selenium-wire
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" requests requests-oauthlib requests-toolbelt requests-unixsocket
 
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" SQLAlchemy SQLAlchemy-JSONField SQLAlchemy-Utils
 
@@ -74,8 +74,8 @@ USER airflow
 
 # O ideal é sempre instalar novas bibliotecas no final, adicionando uma nova camada
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==3.4.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle==3.0.0 -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
 
 # --- ADIÇÃO DO PLAYWRIGHT ---
@@ -90,3 +90,6 @@ RUN playwright install-deps chromium
 
 USER airflow
 RUN playwright install chromium
+
+# Fix: redis 5.x incompatível com celery 5.4.0 + kombu 5.4.2
+RUN pip install --no-cache-dir "redis>=4.5.0,<5.1.0"
