@@ -74,8 +74,8 @@ USER airflow
 
 # O ideal é sempre instalar novas bibliotecas no final, adicionando uma nova camada
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" cloudscraper
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr
-RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddleocr==2.10.0
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" paddlepaddle==3.0.0 -f https://paddlepaddle.org.cn/whl/mkl/avx/stable.html
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" chemdataextractor
 
 # --- ADIÇÃO DO PLAYWRIGHT ---
