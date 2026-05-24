@@ -90,3 +90,6 @@ RUN playwright install-deps chromium
 
 USER airflow
 RUN playwright install chromium
+
+# Fix: redis 5.x incompatível com celery 5.4.0 + kombu 5.4.2
+RUN pip install --no-cache-dir "redis>=4.5.0,<5.1.0"
